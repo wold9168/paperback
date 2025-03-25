@@ -32,7 +32,13 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
     // 设置字体
     set text(
         font: if enfont == "" { font } else {
-            ((name: enfont, covers: "latin-in-cjk"), font)
+            if type(font) == str {
+                ((name: enfont, covers: "latin-in-cjk"), font)
+            }
+            else{
+                font.insert(0,(name: enfont, covers: "latin-in-cjk"))
+                font
+            }
         },
         size: size,
         region: "CN",
